@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd
+        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+    <changeSet  id="1"  author="todotresde">
+        <createTable  tableName="link">
+            <column  name="id"  type="int"  autoIncrement="true">
+                <constraints  primaryKey="true"  nullable="false"/>
+            </column>
+            <column  name="target"  type="varchar(2048)">
+                <constraints nullable="false"/>
+            </column>
+            <column  name="link"  type="varchar(200)">
+                <constraints nullable="false"/>
+            </column>
+            <column  name="password"  type="varchar(200)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+        <createTable  tableName="link_access">
+            <column  name="id"  type="int"  autoIncrement="true">
+                <constraints  primaryKey="true"  nullable="false"/>
+            </column>
+            <column  name="link"  type="int" >
+                <constraints nullable="false"/>
+            </column>
+            <column  name="access_time"  type="date" >
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+        <rollback>
+            DROP TABLE link;
+            DROP TABLE link_access;
+        </rollback>
+    </changeSet>
+
+</databaseChangeLog>
