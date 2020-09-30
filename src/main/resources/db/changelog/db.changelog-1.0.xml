@@ -21,6 +21,12 @@
             <column  name="password"  type="varchar(200)">
                 <constraints nullable="false"/>
             </column>
+            <column  name="valid"  type="boolean">
+                <constraints nullable="false"/>
+            </column>
+            <column  name="expiration_time"  type="date" >
+                <constraints nullable="false"/>
+            </column>
         </createTable>
         <createTable  tableName="link_access">
             <column  name="id"  type="int"  autoIncrement="true">
@@ -30,7 +36,6 @@
                 <constraints nullable="false"/>
             </column>
             <column  name="access_time"  type="date" >
-                <constraints nullable="false"/>
             </column>
         </createTable>
         <rollback>

@@ -40,6 +40,7 @@ public class LinkControllerTest {
                 .andExpect(MockMvcResultMatchers.status().isOk());
     }
 
+    /*
     @Test
     public void whenRedirectLinkWithValidData_thenValidResponse() throws Exception {
         mockMvc.perform(MockMvcRequestBuilders.get("/l/aBGdfDs")
@@ -60,5 +61,6 @@ public class LinkControllerTest {
                 .contentType(MediaType.ALL))
                 .andExpect(MockMvcResultMatchers.status().isOk());
     }
+    */
 
 }

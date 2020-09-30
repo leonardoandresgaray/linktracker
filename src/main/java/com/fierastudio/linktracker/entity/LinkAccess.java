@@ -4,6 +4,7 @@ import lombok.Data;
 import java.util.Date;
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 @Data
 @Entity
@@ -13,10 +14,19 @@ public class LinkAccess {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @NotBlank
+    @NotNull
     @ManyToOne
     private Link link;
 
-    @NotBlank
+    @NotNull
     private Date access_time;
+
+    public LinkAccess(){
+
+    }
+
+    public LinkAccess(Link link){
+        this.link = link;
+        this.access_time = new Date();
+    }
 }

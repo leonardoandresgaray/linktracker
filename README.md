@@ -12,4 +12,6 @@ Set
     username: sa
     password: password
 
+### Drop DB
 
+$ mvn liquibase:clearCheckSums
