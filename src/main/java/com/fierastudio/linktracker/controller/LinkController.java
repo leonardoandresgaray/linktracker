@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 import java.io.IOException;
+import java.util.List;
 
 @RestController
 public class LinkController {
@@ -35,8 +36,8 @@ public class LinkController {
     }
 
     @GetMapping("/stats/{sLink}")
-    ResponseEntity<String> stats(@PathVariable String sLink) {
-        return ResponseEntity.ok("Stats For: " + sLink);
+    ResponseEntity<?> stats(@PathVariable String sLink) {
+        return ResponseEntity.ok(linkService.report(sLink));
     }
 
     @PutMapping("/l/{sLink}")

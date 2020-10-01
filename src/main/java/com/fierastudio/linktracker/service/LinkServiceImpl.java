@@ -1,5 +1,6 @@
 package com.fierastudio.linktracker.service;
 
+import com.fierastudio.linktracker.dto.ReportDTO;
 import com.fierastudio.linktracker.entity.Link;
 import com.fierastudio.linktracker.entity.LinkAccess;
 import com.fierastudio.linktracker.helper.ShortenURL;
@@ -8,6 +9,9 @@ import com.fierastudio.linktracker.repository.LinkRepository;
 import org.apache.commons.validator.routines.UrlValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Service
 public class LinkServiceImpl implements LinkService{
@@ -40,6 +44,15 @@ public class LinkServiceImpl implements LinkService{
             linkAccessRepository.save(new LinkAccess(link));
         }
         return link;
+    }
+
+    @Override
+    public List<ReportDTO> report(String sLink){
+        Link link = linkRepository.findByLink(sLink);
+        if(link != null){
+            return linkAccessRepository.findAllByLinkGroupByDate(link);
+        }
+        return new ArrayList<>();
     }
 
     @Override
